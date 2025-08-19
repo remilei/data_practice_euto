@@ -1,0 +1,16 @@
+contributes:
+    formats:
+        html:
+            toc: true
+            code-fold: false
+            code-summary: "Code"
+            toc-location: left
+            image: "images/background.png"
+            toc-title: " "
+            include-after-body: "footer.html"
+            template-partials:
+                - title-block.html
+            css: style.css
+            smooth-scroll: true
+            code-annotations: hover
+            title-block-banner: true

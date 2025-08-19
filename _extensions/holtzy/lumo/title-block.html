@@ -1,0 +1,115 @@
+<style>
+    :root {
+        --primary-color: $primary-color$;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .title-block-content {
+        position: relative;
+        flex: 1;
+        max-width: 752px;
+        margin: auto;
+        padding-top: 130px;
+        box-sizing: border-box;
+    }
+
+    .header-keyword {
+        color: rgb(59, 59, 59);
+        opacity: 0.9;
+        font-size: 14;
+    }
+    #particles-js {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .bg-image {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<header id="title-block-header" style="position: relative">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- This is the div in which the background image will be included -->
+    $if(bg-image)$
+    <img
+        src="$bg-image$"
+        alt="background image used for decoration"
+        class="bg-image"
+    />
+    $endif$
+
+    <!-- This is the div in which the particles will be included -->
+    $if(is-particlejs-enabled)$
+    <div id="particles-js"></div>
+    $endif$
+
+    <!-- Actual content on top of the particles-->
+    <div class="title-block-content">
+        <!-- Logo -->
+        $if(logo)$
+        <img
+            src="$logo$"
+            alt="logo of company"
+            height="150px"
+            style="margin-bottom: 20px"
+        />
+        $endif$
+
+        <!-- Title -->
+        $if(title)$
+        <h1 class="title">$title$</h1>
+        $endif$
+
+        <hr />
+
+        <!-- Subtitle -->
+        $if(subtitle)$
+        <p class="subtitle">$subtitle$</p>
+        $endif$
+
+        <!-- Author -->
+        $for(author)$
+        <p class="author">
+            <span class="header-keyword">Author: </span>$author$
+        </p>
+        $endfor$
+
+        <!-- Date -->
+        $if(date)$
+        <p style="margin-top: 0px" class="date">
+            <span class="header-keyword">Date: </span>$date$
+        </p>
+        $endif$
+
+        <!-- Particle.js script loaded from a CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+        <!-- use the particle js library with our own config (json file). -->
+        <script>
+            particlesJS.load(
+                "particles-js",
+                "https://raw.githubusercontent.com/holtzy/lumo/main/_extensions/lumo/particles.json",
+            );
+        </script>
+    </div>
+</header>
