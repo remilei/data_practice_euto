@@ -159,13 +159,13 @@ table.dataTable tbody td {
 }
 
 /* ------------------------------------------- Callout ----------------- */
-div.callout.callout {
+/*div.callout.callout-note {
     border: none;
     padding: 0.4em 0.7em;
     border-left: var(--primary-color) 4px solid;
     background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
     border-radius: 0px;
-}
+}*/
 
 button {
     color: var(--primary-color);
