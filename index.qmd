@@ -12,20 +12,20 @@ author: EU Tax Observatory
 date: last-modified
 ---
 
-This document presents some general advice about how to **collaborate, manage, store and communicate** on coding project related to research.
+This document presents some general advice about how to **collaborate, manage, store, and communicate** on coding projects related to research.
 
 :::{.callout-note}
 This is just general advice! Of course, it depends on the project, the goal to be achieved, and keeping some flexibility is always a good idea!
 :::
 
-## Sharing code and versionning
+## Sharing code and versioning
 
-Whereas comments on coding scripts, data accessibility, and transparency are the key elements for full reproducibility, the main issue is how to collaborate and have a consistent repository between the collaborators of the project. Let's say that two members work jointly on the coding part, keeping the script up to date for both is challenging. Moreover, let's say that you want to reproduce a figure that was produced six months ago in your script, how is it possible to smoothly do it? 
+Whereas comments on coding scripts, data accessibility, and transparency are the key elements for full reproducibility, the main issue is how to collaborate and have a consistent repository between the collaborators of the project. Let's say that two members work jointly on the coding part; keeping the script up to date for both is challenging. Moreover, let's say that you want to reproduce a figure that was produced six months ago in your script. How is it possible to do it smoothly? 
 
-The key is to have **a shared repository** for all team members. In such way, every change is transparent and easily accessible. In addition, you need to have all version of the coding scripts. We present here two options for sharing and collaborating on code. We also summarize pros and cons of both options. 
+The key is to have **a shared repository** for all team members. In such a way, every change is transparent and easily accessible. In addition, you need to have all versions of the coding scripts. We present here two options for sharing and collaborating on code. We also summarize the pros and cons of both options. 
 
 :::{.callout-warning}
-In this section, we do not talk about storing **data**. We only focus on code. Storing data depends mainly on regulation that apply. For instance, if you have any confidential data, please make sure to use a data sharing solution being compliant with the GPDR. For more details see @sec-data-storing.
+In this section, we do not talk about storing **data**. We only focus on code. Storing data depends mainly on the regulations that apply. For instance, if you have any confidential data, please make sure to use a data sharing solution that is compliant with the GDPR. For more details, see @sec-data-storing.
 :::
 
 
@@ -42,17 +42,17 @@ In this section, we do not talk about storing **data**. We only focus on code. S
 
 ### Cloud option
 
-The first is the easiest to implement. Using a share repository in a Cloud, it is possible to share the coding part with all team members, perhaps the entire project (including drafts, reports and paper). Using solution such as Dropbox, Nextcloud PSE or other type, it is easily manageable and work as a classic repository in your own laptop.
+The first is the easiest to implement. Using a shared repository in the Cloud, it is possible to share the coding part with all team members, perhaps the entire project (including drafts, reports, and papers). Using a solution such as Dropbox, Nextcloud PSE, or another type, it is easily manageable and works as a classic repository on your laptop.
 
-Currently, most cloud options offer the possibility to access previous versions of a file. Let's say you want to go back to a previous version of your file (to change a very cool graph), you can do that. The only thing is to configure your cloud repo in such way that it stores all files version. This might be space consuming, so you have to be sure that you have enough space to store your files.
+Currently, most cloud options offer the possibility to access previous versions of a file. Let's say you want to go back to a previous version of your file (to change a very cool graph), you can do that. The only thing is to configure your cloud repo in such a way that it stores all file versions. This might be space-consuming, so you have to be sure that you have enough space to store your files.
 
-However, the main drawback of the simplest solution is that it also offers limited solution. Let's say that a team member changes something in your coding repository that you want to check. You only know which file is concerned (regarding last modification date), but you do not know **where to look** within the file. You have to check the file entirely and identify the part being changed. If the same thing appears for multiple file, it becomes worse.
+However, the main drawback of the simplest solution is that it also offers a limited solution. Let's say that a team member changes something in your coding repository that you want to check. You only know which file is concerned (regarding last modification date), but you do not know **where to look** within the file. You have to check the file entirely and identify the part being changed. If the same thing appears for multiple files, it becomes worse.
 
 :::{.callout-note}
 ## Advantages
 
 - Easy to implement
-- Can keep all file version
+- Can keep all file versions
 - Do not require any technical skills
 :::
 
@@ -60,16 +60,16 @@ However, the main drawback of the simplest solution is that it also offers limit
 ## Drawbacks
 
 - Identifying changes within the code is tricky
-- It becomes worse with repository with numerous files
+- It becomes worse with a repository with numerous files
 :::
 
 ### GitHub
 
-GitHub answers the main drawback of the cloud option: identifying changes within a repository. In addition, it registers all changes between two files versions, and list any changes between two updates. Hence, it is easy to track change, check if everything is right. However, it requires an investment from all team members to manage GitHub.
+GitHub answers the main drawback of the cloud option: identifying changes within a repository. In addition, it registers all changes between two file versions and lists any changes between two updates. Hence, it is easy to track changes and check if everything is right. However, it requires an investment from all team members to manage GitHub.
 
-So, how to use GitHub? You don't need to be a nerd with Terminal applications to manage a GitHub project (you can do it if you want!). The [GitHub Desktop](https://github.com/apps/desktop) enables smoothly managing such a project and provide interface to easily monitor changes over time.
+So, how to use GitHub? You don't need to be a nerd with Terminal applications to manage a GitHub project (you can do it if you want!). The [GitHub Desktop](https://github.com/apps/desktop) enables smoothly managing such a project and provides an interface to easily monitor changes over time.
 
-Let's talk about the main actions for a GitHub project. For setting up a repository, see [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories). We now have a repository with two team members such as
+Let's talk about the main actions for a GitHub project. For setting up a repository, see [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories). We now have a repository with two team members, such as
 
 ```{mermaid}
 %%| label: fig-newwgtadj
@@ -89,7 +89,7 @@ flowchart TB;
     C[Member 2] --> B;
 ```
 
-Let's say that the member 1 works on the project and make some significant changes in this own laptop. For now, **changes made by Member 1 are not shared with Member 2**. It has to **commit** and **push** its changes. 
+Let's say that member 1 works on the project and makes some significant changes in their laptop. For now, **changes made by Member 1 are not shared with Member 2**. It has to **commit** and **push** its changes. 
 
 ```{mermaid}
 %%| label: fig-newwgtadj2
@@ -111,7 +111,7 @@ flowchart TB;
 
 <!-- B{ shape: procs, label: "Project"} -->
 
-Now, consider that changes made by Member 1 are committed and pushed. The Member 2 wants to work on the project and check the track changes. It has to pull the project on its laptop to see any changes. After that, both repository are synchronized.
+Now, consider that changes made by Member 1 are committed and pushed. The Member 2 wants to work on the project and check the track changes. It has to pull the project from its laptop to see any changes. After that, both repositories are synchronized.
 
 ```{mermaid}
 %%| label: fig-newwgtadj3
@@ -131,7 +131,7 @@ flowchart LR;
     B --> |Pull| C[Member 2];
 ```
 
-In addition, the Member 2 can monitor changes being achieved by Member 1 in more details, without reviewing all the code. Some software offer this possibility, but the GitHub Desktop offers good highlight such as
+In addition, Member 2 can monitor changes being achieved by Member 1 in more detail, without reviewing all the code. Some software offers this possibility, but GitHub Desktop offers good highlights such as
 
 ![Tracking changes](images/diff-selection.png)
 
@@ -139,7 +139,7 @@ In addition, the Member 2 can monitor changes being achieved by Member 1 in more
 Here, lines highlighted in green are added by Member 1, whereas lines highlighted in red are removed by Member 1. The stable part of the coding file is uncolored (not applicable here).
 :::
 
-In the end, every member can trace back every change in the coding file using the number of the commit. By doing so, it ensures to keep every version of the coding files. Every member can thus generate every figure or table, regardless of which version the figure or table was. To sum up, the project is composed of numerous evolutions that can be identified by their number such as
+In the end, every member can trace back every change in the coding file using the number of the commit. By doing so, it ensures that every version of the coding files is available. Every member can thus generate every figure or table, regardless of which version the figure or table was in. To sum up, the project is composed of numerous evolutions that can be identified by their number, such as
 
 
 ```{mermaid}
@@ -171,19 +171,19 @@ Finally, the GitHub environment is not accessible in the CASD for security reaso
 ## Advantages
 
 - Identify changes between files
-- Can keep all file version
+- Can keep all file versions
 :::
 
 :::{.callout-warning}
 ## Drawbacks
 
-- Require some technical investment from all team member
+- Require some technical investment from all team members
 - Not applicable for the CASD
 :::
 
 ## Comments
 
-Coding files can be hard to understand, especially for non-experts of the language of consideration. Moreover, data processing can be achieved following different packages, especially in R, which might make code reading difficult for outsiders. For instance, let's take the following example.
+Coding files can be hard to understand, especially for non-experts in the language of consideration. Moreover, data processing can be achieved following different packages, especially in R, which might make code reading difficult for outsiders. For instance, let's take the following example.
 
 ::: {.panel-tabset}
 
@@ -210,7 +210,7 @@ regress u_p y_sale i.h_type i.origin
 :::
 
 
-If you are not an R expert, understanding such a chunk of code might difficult. Hence, assessing whether there is an issue or a bad methodological choice is highly challenging. Now, let's look at the commented version of this script.
+If you are not an R expert, understanding such a chunk of code might be difficult. Hence, assessing whether there is an issue or a bad methodological choice is highly challenging. Now, let's look at the commented version of this script.
 
 :::{.panel-tabset}
 
@@ -218,7 +218,7 @@ If you are not an R expert, understanding such a chunk of code might difficult. 
 
 ```{r, echo = TRUE, eval = FALSE}
 
-# we create a new column `u_p` that represent the housing unitary price: 
+# we create a new column `u_p` that represents the housing unitary price: 
 # housing value (`val`) divided by surface (`sur`)
 df_data[, u_p := val / sur]
 
@@ -261,11 +261,11 @@ Comments are extremely helpful for others to understand your code. As a result, 
 
 Additionally, consider revisiting an old project six months or a year later. Your coding practices may have evolved, and you might have switched packages, making it more challenging to navigate through your code. This is particularly true for lengthy code files, which can be difficult to comprehend after being away from them for several months!
 
-However, for straightforward code, comments are not mandatory as they complicate the reading of the code. Hence, commenting code is a balance between having a clear explanation about what is performed and keep a code as clean as possible. Performing code review (see @sec-codereview) helps to adjust comments on code.
+However, for straightforward code, comments are not mandatory as they complicate the reading of the code. Hence, commenting code is a balance between having a clear explanation about what is performed and keeping the code as clean as possible. Performing code review (see @sec-codereview) helps to adjust code comments.
 
 ## The logfile
 
-To monitor projects, and more specifically long-term projects, having a logfile is highly advised. This file registers all modifications being made with information such as the date, the author, and a brief explanation. It helps to track the evolution of the project, the main changes within the project, and also individuals' contribution to the coding part of the research project. It is highly advised for repository using the cloud option rather than the GitHub one. By doing so, it helps to identify changed, and also makes the research of a specific file version easiest. Here is a snapshot of the logfile used for an ongoing project:
+To monitor projects, and more specifically long-term projects, having a logfile is highly advised. This file registers all modifications being made with information such as the date, the author, and a brief explanation. It helps to track the evolution of the project, the main changes within the project, and also individuals' contributions to the coding part of the research project. It is highly advised to use a repository using the cloud option rather than the GitHub one. By doing so, it helps to identify changes and also makes researching a specific file version easier. Here is a snapshot of the logfile used for an ongoing project:
 
 ```{markdown, eval = FALSE}
 
@@ -274,7 +274,7 @@ To monitor projects, and more specifically long-term projects, having a logfile 
 - [ ] Merging and comparison with Orbis database
 - [ ] Need to assess the quality of changes within the BO register
 - [ ] Launch a new collection for 2025
-- [ ] Outcomes about rental eviction, housing maintenance and renters income to compute
+- [ ] Outcomes about rental eviction, housing maintenance, and renters' income to compute
 - [ ] Access to the TVVI database
 
 # Previous changes
@@ -287,29 +287,29 @@ To monitor projects, and more specifically long-term projects, having a logfile 
 
 ## 25.04.20
 
-- New code to have matching rate per percentile. RL 688eea8
+- New code to have a matching rate per percentile. RL 688eea8
 - We also account for the individual shares and highlight that the 25% rule is a main limit for transparency. RL 688eea8
 - New map for Paris. RL 688eea8
 
 ```
 
 :::{.callout-note}
-The logfile is most of the time written in lightweight open source format such as `txt` or `Markdown` to be easily readable and writable, regardless the OS.
+The logfile is most of the time written in a lightweight open source format such as `txt` or `Markdown` to be easily readable and writable, regardless of the OS.
 :::
 
-The logfile might also contain a to-do section. Research projects are not always linear, and writing future steps to introduce in this file is useful. Indeed, when we re-open a new project, looking at a logfile provides us a good overview of what was achieved and what is needed.
+The logfile might also contain a to-do section. Research projects are not always linear, and writing future steps to introduce in this file is useful. Indeed, when we reopen a new project, looking at a logfile provides us with a good overview of what was achieved and what is needed.
 
-Finally, sharing a logfile between contributors is a key element to coordinating your efforts. Taking a look at the logfile enables all team members involved in the project to see what are the future steps to be implemented, whereas they can easily monitor previous achievements. The authorship makes communication easier, especially if there is a misunderstanding in the coding parts.
+Finally, sharing a logfile between contributors is a key element to coordinating your efforts. Taking a look at the logfile enables all team members involved in the project to see what the future steps are to be implemented, whereas they can easily monitor previous achievements. The authorship makes communication easier, especially if there is a misunderstanding in the coding parts.
 
 ## Data accessibility
 
-The data used for the empirical analysis are a key information to provide to ensure consistent and reproducible information. Hence, we need to detail following information:
+The data used for the empirical analysis is key information to provide to ensure consistent and reproducible information. Hence, we need to detail the following information:
 
 - Data source: where can outsiders access the data?
 - Data version: for updated datasets, specify the version used in this project (especially for flow data)
 - Metadata  
 
-For the metadata, it is useful to list for all team member that might join the project what is being stored in the main datasets. **Ideally**, having a clear explanation of each column, what is the observation unit, whether it is a custom column or derived directly from raw data. In addition, having some units might be of interest as well. It is time-consuming to do so (especially for large dataset), but helps a lot for newcomers to appropriate the data. If an online documentation exists elsewhere, do not hesitate to redirect directly to this website. However, in such case, please make sure that your columns have the same names as original data.
+For the metadata, it is useful to list for all team members who might join the project what is being stored in the main datasets. **Ideally**, having a clear explanation of each column, what the observation unit is, whether it is a custom column or derived directly from raw data. In addition, having some units might be of interest as well. It is time-consuming to do so (especially for a large dataset), but it helps a lot for newcomers to understand the data. If an online documentation exists elsewhere, do not hesitate to redirect directly to this website. However, in such a case, please make sure that your columns have the same names as the original data.
 
 ## README file
 
@@ -319,11 +319,11 @@ The README is probably the first file an outside individual will open when acces
 - The main objective of the research project
 - Information about how to access the data
 - What are the main software being used in the project
-- The license of your code, in our case this is mostly open, but it depends
-- Any explanation that helps individuals to understand you repository
+- The license of your code, in our case, is mostly open, but it depends
+- Any explanation that helps individuals understand your repository
 
 :::{.callout-note}
-The README is always written in open file format, mainly Markdown.
+The README is always written in an open file format, mainly Markdown.
 :::
 
 An example of a README file
@@ -333,10 +333,10 @@ An example of a README file
 # Name of the project
 
 ## Overview
-Here we discuss the objective of the project, a snapshot of the main conclusion, and potential redirection to the paper.
+Here, we discuss the objective of the project, a snapshot of the main conclusion, and potential redirection to the paper.
 
 ## Features of the code
-List big steps of your code being accessible. For instance:
+List the big steps of making your code accessible. For instance:
 
 - Data collection
 - Data cleaning
@@ -357,9 +357,9 @@ GitHub:
 
 ## Organizing directory and files
 
-Besides the scripts, structuring a coding directory is also a good practice to have. First, **one script to do everything must be avoided.** Research projects can be large, including some data loading, data management, descriptive statistics, econometric analysis. One standalone file would be too large to be easily understandable by team members or outsiders.
+Besides the scripts, structuring a coding directory is also a good practice to have. First, **one script to do everything must be avoided.** Research projects can be large, including some data loading, data management, descriptive statistics, and econometric analysis. One standalone file would be too large to be easily understandable by team members or outsiders.
 
-On the other hand, spread-out files are hard to understand. Let's say you join an ongoing project with multiple files to be handled. How to know which is the first to execute? Order in scripting files is a key element to ensure full reproducibility. Let's say you run the econometric analysis before the filtering step, results would be dramatically different. Hence, one file must aggregate everything and call each subscript.
+On the other hand, spread-out files are hard to understand. Let's say you join an ongoing project with multiple files to be handled. How to know which is the first to execute? Order in scripting files is a key element to ensure full reproducibility. Let's say you run the econometric analysis before the filtering step; the results would be dramatically different. Hence, one file must aggregate everything and call each subscript.
 
 We can call this script `main_script` and structure the code as follows (example from an ongoing project)
 
@@ -394,8 +394,8 @@ theme_update(text = element_text(family = "serif"))
 
 output_table <- "output_code/table/" ## location of table outputs
 output_figure <- "output_code/figure/" ## location of figure outputs
-choice_w <- 16 # width of the output graphics (in inch)
-choice_h <- 9 # height of the output graphics (in inch)
+choice_w <- 16 # width of the output graphics (in inches)
+choice_h <- 9 # height of the output graphics (in inches)
 
 # -----------------------------------------------------------------------------
 # Main Code
@@ -453,8 +453,8 @@ global output_table "output_code/table/" ## location of table outputs
 global output_figure "output_code/figure/" ## location of figure outputs
 
 * Define graphics dimensions
-global choice_w = 16 # width of the output graphics (in inch)
-global choice_h = 9 # height of the output graphics (in inch)
+global choice_w = 16 # width of the output graphics (in inches)
+global choice_h = 9 # height of the output graphics (in inches)
 
 * -----------------------------------------------------------------------------
 * Main Code
@@ -482,11 +482,11 @@ do "code/econometric_analysis/03_placebo.do"
 
 :::
 
-The main script is quite simple to read regardless you are an R expert. The objective is to provide all needed steps with some comments to understand each step. The script can be decomposed in different sections.
+The main script is quite simple to read, regardless of whether you are an R expert. The objective is to provide all the needed steps with some comments to understand each step. The script can be decomposed into different sections.
 
-First, we introduce **a preamble**. We provide the key information about the project such as the persons involved in it, the date, and the objective of the project. Second, we load everything we need. It avoids loading multiple times a package. Also, it is helpful when you need to provide all relevant packages to be loaded to an alternative member. You can also easily list all your packages when you need to provide the version to ensure full reproducibility. Third, we load the data. Then, we run the analysis.
+First, we introduce **a preamble**. We provide the key information about the project, such as the persons involved in it, the date, and the objective of the project. Second, we load everything we need. It avoids loading a package multiple times. Also, it is helpful when you need to provide all relevant packages to be loaded to an alternative member. You can also easily list all your packages when you need to provide the version to ensure full reproducibility. Third, we load the data. Then, we run the analysis.
 
-Naming files is an important thing. When you open a coding directory, you want to understand easily how the directory is structured. That's why we advise you to store your subscript within subdirectories with explicit names such as `descriptive statistics`, `data`, or `econometric_analysis`. It helps to navigate through the directory and understand the code and the underlying choices (which is, in the end, the main thing). Within each subdirectory, we advise you to number coding files, just to remind you in which order these scripts must be executed. In the same fashion, naming objects within the script should be as clear as possible to ensure team members understand what is what (but remind you that comments are helpful also!).
+Naming files is an important thing. When you open a coding directory, you want to understand easily how the directory is structured. That's why we advise you to store your subscripts within subdirectories with explicit names such as `descriptive statistics`, `data`, or `econometric_analysis`. It helps to navigate through the directory and understand the code and the underlying choices (which is, in the end, the main thing). Within each subdirectory, we advise you to number the coding files, just to remind you in which order these scripts must be executed. In the same fashion, naming objects within the script should be as clear as possible to ensure team members understand what is what (but remind you that comments are helpful also!).
 
 Finally, we can sum up the structure of the project as follows in a more general manner.
 
@@ -546,25 +546,25 @@ Here, we have two main directories (`code` and `output_code`). The second direct
 
 ## Storing data {#sec-data-storing}
 
-The main script is quite simple to read regardless you are an R expert. The GitHub is a platform to share and collaborate on code. But, how about data? Generally speaking, we should avoid storing any data on it for two reasons. First, it relates to the sensitivity of the data. 
+The main script is quite simple to read, regardless of whether you are an R expert. GitHub is a platform to share and collaborate on code. But, how about data? Generally speaking, we should avoid storing any data on it for two reasons. First, it relates to the sensitivity of the data. 
 
-To store data securely, you can use the PSE NextCloud solution. Each member of the EU Tax Observatory is a member of [PSE NextCloud](https://pse-nextcloud.pjse.fr/) which offers a Cloud solution for storing files, documents, or data. It is similar to common Cloud services such as Dropbox, but the servers are located in Paris, within PSE. Hence, it provides a way to store and share data between members which is compliant with the RGPD. You can improve the security level of this repository by adding passwords or time restrictions. 
+To store data securely, you can use the PSE NextCloud solution. Each member of the EU Tax Observatory is a member of [PSE NextCloud](https://pse-nextcloud.pjse.fr/), which offers a Cloud solution for storing files, documents, or data. It is similar to common Cloud services such as Dropbox, but the servers are located in Paris, within PSE. Hence, it provides a way to store and share data between members, which is compliant with the RGPD. You can improve the security level of this repository by adding passwords or time restrictions. 
 
 :::{.callout-note}
 In R, there is a package to link your coding repository with your NextCloud data repo.
 :::
 
-Besides the storage aspect, it is important to store data on a easily readable format such as csv or parquet to ensure an easy opening for other members or replicators. Proprietary format such as Excel should be avoided.
+Besides the storage aspect, it is important to store data in an easily readable format, such as CSV or Parquet, to ensure an easy opening for other members or replicators. Proprietary formats such as Excel should be avoided.
 
 ## Code review {#sec-codereview}
 
-Finally, mistakes in coding files are common. Performing time to time some code review might be a good practice to ensure that everything runs as planned. For instance, you can add a `0` when filtering data that affects the composition of your sample, introduce a filter to simplify the data process in the first place that remains, or just comment on some parts of the code that are useful. Making code review helps to track and correct these potential mistakes. When you are writing your coding file, you don't have necessarily the hindsight to identify all issues (think about when writing a draft, you have some inconsistency all along).
+Finally, mistakes in coding files are common. Performing a code review from time to time, some code review might be a good practice to ensure that everything runs as planned. For instance, you can add a `0` when filtering data that affects the composition of your sample, introduce a filter to simplify the data process in the first place that remains, or just comment on some parts of the code that are useful. Making code review helps to track and correct these potential mistakes. When you are writing your coding file, you don't necessarily have the hindsight to identify all issues (think about when writing a draft, you have some inconsistencies all along).
 
-A code review is just looking at the entire code sequentially and ensuring that everything is fine. First, you must be sure that your code is not bugged when you are running it. If it happens, you must correct it. Second, you must track any typo issues such as the filtering process, wrong column assignment, etc. that might affect the results. Third, you may find your code too complex. If you can simplify it through a partial re-writing process, you should do it. Even if comments help understand your process, the easier your code is, the more understandable is. 
+A code review is just looking at the entire code sequentially and ensuring that everything is fine. First, you must be sure that your code is not buggy when you are running it. If it happens, you must correct it. Second, you must track any typo issues, such as the filtering process, wrong column assignment, etc., that might affect the results. Third, you may find your code too complex. If you can simplify it through a partial re-writing process, you should do it. Even if comments help understand your process, the easier your code is, the more understandable it is. 
 
-## Software versionning
+## Software versioning
 
-Finally, a point that is mostly omitted in reproducible coding is software and package versioning. Package or software might evolve which might introduce some bugs in your code. For instance, a code written in 2019 might be broken if we use the current packages. Hence, we need to specify the version of the main software (R, Python, or Stata) and also the attached version of the packages used. For R, we provide the following code to access software and packages versions.
+Finally, a point that is mostly omitted in reproducible coding is software and package versioning. A package or software might evolve, which might introduce some bugs in your code. For instance, a code written in 2019 might be broken if we use the current packages. Hence, we need to specify the version of the main software (R, Python, or Stata) and also the attached version of the packages used. For R, we provide the following code to access software and package versions.
 
 :::{.panel-tabset}
 
@@ -572,10 +572,10 @@ Finally, a point that is mostly omitted in reproducible coding is software and p
 
 ```{r, eval = TRUE}
 # it provides information about the R version being used
-# also, it list all packages being installed in your session
+# also, it lists all packages being installed in your session
 sessionInfo() 
 
-# it returns the current version of package of interest
+# it returns the current version of the package of interest
 packageVersion("data.table")
 ```
 
@@ -594,7 +594,7 @@ ado describe <package_name>
 
 :::
 
-Here, the current version of R is 4.4.3, whereas the version of the `data.table` package is 1.17.0. I need to share this information to ensure that the results are fully reproducible, even in 10 years. An alternative is to use a [Docker](https://www.docker.com/) file which provides all relevant files and packages to run your script and replicate your results. 
+Here, the current version of R is 4.4.3, whereas the version of the `data.table` package is 1.17.0. I need to share this information to ensure that the results are fully reproducible, even in 10 years. An alternative is to use a [Docker](https://www.docker.com/) file, which provides all relevant files and packages to run your script and replicate your results. 
 
 ## Additional resources about coding
 
