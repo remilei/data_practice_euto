@@ -22,22 +22,24 @@ This is just general advice! Of course, it depends on the project, the goal to b
 
 Whereas comments on coding scripts, data accessibility, and transparency are the key elements for full reproducibility, the main issue is how to collaborate and have a consistent repository between the collaborators of the project. Let's say that two members work jointly on the coding part; keeping the script up to date for both is challenging. Moreover, let's say that you want to reproduce a figure that was produced six months ago in your script. How is it possible to do it smoothly? 
 
-The key is to have **a shared repository** for all team members. In such a way, every change is transparent and easily accessible. In addition, you need to have all versions of the coding scripts. We present here two options for sharing and collaborating on code. We also summarize the pros and cons of both options. 
+The key is to have **a shared repository** for all team members. In such a way, every change is transparent and easily accessible. In addition, you need to have all versions of the coding scripts. We present two options for sharing and collaborating on code here. We also summarize the pros and cons of both options. 
 
 :::{.callout-warning}
 In this section, we do not talk about storing **data**. We only focus on code. Storing data depends mainly on the regulations that apply. For instance, if you have any confidential data, please make sure to use a data sharing solution that is compliant with the GDPR. For more details, see @sec-data-storing.
 :::
 
 
-+--------------+-------------------------+----------------------------------+
-| Option       | Pros                    | Cons                             |
-+==============+=========================+==================================+
-| Cloud option | - Easy to implement     | - Difficult to track changes     |
-|              | - File version          |                                  |
-+--------------+-------------------------+----------------------------------+ 
-| Github       | - File version          | - Investment cost for all member |
-|              | - Easy to track changes | - Difficult to manage with CASD  |
-+--------------+-------------------------+----------------------------------+
++--------------+-----------------------------+----------------------------------+
+| Option       | Pros                        | Cons                             |
++==============+=============================+==================================+
+| Cloud option | - Easy to implement         | - Difficult to track changes     |
+|              | - File version              |                                  |
+|              | - Integration with Overleaf |                                  |
++--------------+-----------------------------+----------------------------------+ 
+| Github       | - File version              | - Investment cost for all member |
+|              | - Easy to track changes     | - Difficult to manage with CASD  |
+|              | - Integration with Overleaf |                                  |
++--------------+-----------------------------+----------------------------------+
 
 
 ### Cloud option
@@ -48,7 +50,7 @@ Currently, most cloud options offer the possibility to access previous versions 
 
 However, the main drawback of the simplest solution is that it also offers a limited solution. Let's say that a team member changes something in your coding repository that you want to check. You only know which file is concerned (regarding last modification date), but you do not know **where to look** within the file. You have to check the file entirely and identify the part being changed. If the same thing appears for multiple files, it becomes worse.
 
-:::{.callout-note}
+:::{.callout-tip}
 ## Advantages
 
 - Easy to implement
@@ -56,7 +58,7 @@ However, the main drawback of the simplest solution is that it also offers a lim
 - Do not require any technical skills
 :::
 
-:::{.callout-warning}
+:::{.callout-important}
 ## Drawbacks
 
 - Identifying changes within the code is tricky
@@ -167,23 +169,49 @@ Hence, we advise you to put this number in your logfile when making a commit and
 
 Finally, the GitHub environment is not accessible in the CASD for security reasons. In the CASD, the repository is shared between all team members. However, there is no system to track changes in code between members. However, it is possible to use Git locally (the software behind GitHub) to monitor code in the same way locally and benefit from versioning and changes highlighting.
 
-:::{.callout-note}
+:::{.callout-tip}
 ## Advantages
 
 - Identify changes between files
 - Can keep all file versions
 :::
 
-:::{.callout-warning}
+:::{.callout-important}
 ## Drawbacks
 
 - Require some technical investment from all team members
 - Not applicable for the CASD
 :::
 
-## Comments
+## Integration with Overleaf
 
-Coding files can be hard to understand, especially for non-experts in the language of consideration. Moreover, data processing can be achieved following different packages, especially in R, which might make code reading difficult for outsiders. For instance, let's take the following example.
+[Overleaf](https://www.overleaf.com) is an online text editor widely used in research. From PSE, we get an Overleaf account that enables us to collaborate and write research papers, reports, or notes. It offers the possibility to integrate either Dropbox or GitHub. Hence, running your code automatically updates the repository with your output document (either paper, report, or even slides), making collaboration smoother.
+
+## Comments and readability
+
+Coding files can be hard to understand, especially for non-experts in the language of consideration. Moreover, data processing can be achieved following different packages, especially in R, which might make code reading difficult for outsiders. So first, you have to keep in mind to make your code as readable as possible. Let's take the two following examples, using Stata:
+
+:::{.panel-tabset}
+
+## Example 1
+
+```{stata, echo = TRUE, eval = FALSE}
+replace X="Yes" if Y=="Hello" // Cond 1
+replace X="Never" if Y=="Goodbye" // Cond 2
+``` 
+
+## Example 2
+
+```{stata, echo = TRUE, eval = FALSE}
+replace X = "Yes"    if Y == "Hello"     // Cond 1
+replace X = "Never"  if Y == "Goodbye"   // Cond 2
+```
+
+:::
+
+These two examples do the same thing. However, which version of the code is easier to read and understand? Probably example 2. For a short file, it does not make a huge difference. Yet, think about opening a big coding file, you will prefer to have a properly structured code, which enhances its readability and consequently the way you understand it.
+
+Readability of your code is important, but might not be sufficient. When you have to do multiple tasks, it is better to understand the flow. For instance, let's take the following example.
 
 ::: {.panel-tabset}
 
@@ -210,7 +238,7 @@ regress u_p y_sale i.h_type i.origin
 :::
 
 
-If you are not an R expert, understanding such a chunk of code might be difficult. Hence, assessing whether there is an issue or a bad methodological choice is highly challenging. Now, let's look at the commented version of this script.
+If you are not an R/Stata expert, understanding such a chunk of code might be difficult (even if you are by the way). Hence, assessing whether there is an issue or a bad methodological choice is highly challenging. Now, let's look at the commented version of this script.
 
 :::{.panel-tabset}
 
@@ -263,44 +291,6 @@ Additionally, consider revisiting an old project six months or a year later. You
 
 However, for straightforward code, comments are not mandatory as they complicate the reading of the code. Hence, commenting code is a balance between having a clear explanation about what is performed and keeping the code as clean as possible. Performing code review (see @sec-codereview) helps to adjust code comments.
 
-## The logfile
-
-To monitor projects, and more specifically long-term projects, having a logfile is highly advised. This file registers all modifications being made with information such as the date, the author, and a brief explanation. It helps to track the evolution of the project, the main changes within the project, and also individuals' contributions to the coding part of the research project. It is highly advised to use a repository using the cloud option rather than the GitHub one. By doing so, it helps to identify changes and also makes researching a specific file version easier. Here is a snapshot of the logfile used for an ongoing project:
-
-```{markdown, eval = FALSE}
-
-# To-do
-- [ ] Make some descriptive statistics about tenure status
-- [ ] Merging and comparison with Orbis database
-- [ ] Need to assess the quality of changes within the BO register
-- [ ] Launch a new collection for 2025
-- [ ] Outcomes about rental eviction, housing maintenance, and renters' income to compute
-- [ ] Access to the TVVI database
-
-# Previous changes
-
-## 25.05.06
-
-- Code for the internal workshop is ok. RL 2db4c55 
-- Figures are currently working. First push in a GitHub repo in the next weeks. RL 2db4c55
-- Code review. RL 2db4c55
-
-## 25.04.20
-
-- New code to have a matching rate per percentile. RL 688eea8
-- We also account for the individual shares and highlight that the 25% rule is a main limit for transparency. RL 688eea8
-- New map for Paris. RL 688eea8
-
-```
-
-:::{.callout-note}
-The logfile is most of the time written in a lightweight open source format such as `txt` or `Markdown` to be easily readable and writable, regardless of the OS.
-:::
-
-The logfile might also contain a to-do section. Research projects are not always linear, and writing future steps to introduce in this file is useful. Indeed, when we reopen a new project, looking at a logfile provides us with a good overview of what was achieved and what is needed.
-
-Finally, sharing a logfile between contributors is a key element to coordinating your efforts. Taking a look at the logfile enables all team members involved in the project to see what the future steps are to be implemented, whereas they can easily monitor previous achievements. The authorship makes communication easier, especially if there is a misunderstanding in the coding parts.
-
 ## Data accessibility
 
 The data used for the empirical analysis is key information to provide to ensure consistent and reproducible information. Hence, we need to detail the following information:
@@ -319,7 +309,7 @@ The README is probably the first file an outside individual will open when acces
 - The main objective of the research project
 - Information about how to access the data
 - What are the main software being used in the project
-- The license of your code, in our case, is mostly open, but it depends
+- The license of your code, in our case, is mostly open, but it depends on research projects.
 - Any explanation that helps individuals understand your repository
 
 :::{.callout-note}
@@ -369,7 +359,7 @@ We can call this script `main_script` and structure the code as follows (example
 
 ```{r, eval = FALSE, echo = TRUE}
 ################################################################################
-# INTREALES Project Code Preamble
+# Code Preamble
 ################################################################################
 
 # -----------------------------------------------------------------------------
@@ -378,8 +368,12 @@ We can call this script `main_script` and structure the code as follows (example
 
 # Author:  Author 1, Author 2, Author 3
 # Title:   Code of super cool project
-# Date:    2025-04-08
-# Version: 1.0
+# Date:    
+# Version: 
+
+# -----------------------------------------------------------------------------
+# The log file section can be integrated here with major changes.
+# -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
 # Load Necessary Libraries
@@ -424,7 +418,7 @@ source("code/econometric_analysis/03_placebo.R")
 
 ```{stata, echo = TRUE, eval = FALSE}
 * ################################################################################
-* INTREALES Project Code Preamble
+* Code Preamble
 * ################################################################################
 
 * -----------------------------------------------------------------------------
@@ -433,8 +427,12 @@ source("code/econometric_analysis/03_placebo.R")
 
 * Author:  Author 1, Author 2, Author 3
 * Title:   Code of super cool project
-* Date:    2025-04-08
-* Version: 1.0
+* Date:    
+* Version: 
+
+* -----------------------------------------------------------------------------
+* The log file section can be integrated here with major changes.
+* -----------------------------------------------------------------------------
 
 * -----------------------------------------------------------------------------
 * Load Necessary Libraries
@@ -482,67 +480,67 @@ do "code/econometric_analysis/03_placebo.do"
 
 :::
 
-The main script is quite simple to read, regardless of whether you are an R expert. The objective is to provide all the needed steps with some comments to understand each step. The script can be decomposed into different sections.
+The main script is quite simple to read, regardless of whether you are an R/Stata expert. Remind you that clear code is more likely to be understood by team members. The objective is to provide all the needed steps with some comments to understand each step. The script can be decomposed into different sections.
 
-First, we introduce **a preamble**. We provide the key information about the project, such as the persons involved in it, the date, and the objective of the project. Second, we load everything we need. It avoids loading a package multiple times. Also, it is helpful when you need to provide all relevant packages to be loaded to an alternative member. You can also easily list all your packages when you need to provide the version to ensure full reproducibility. Third, we load the data. Then, we run the analysis.
+First, we introduce **a preamble**. We provide the key information about the project, such as the persons involved in it, the date, and the objective of the project. Second, we load everything we need. It avoids loading a package multiple times. Also, it is helpful when you need to provide all relevant packages to be loaded to an alternative member. You can also easily list all your packages when you need to provide the version to ensure full reproducible scripts. Third, we load the data. Then, we run the analysis.
 
-Naming files is an important thing. When you open a coding directory, you want to understand easily how the directory is structured. That's why we advise you to store your subscripts within subdirectories with explicit names such as `descriptive statistics`, `data`, or `econometric_analysis`. It helps to navigate through the directory and understand the code and the underlying choices (which is, in the end, the main thing). Within each subdirectory, we advise you to number the coding files, just to remind you in which order these scripts must be executed. In the same fashion, naming objects within the script should be as clear as possible to ensure team members understand what is what (but remind you that comments are helpful also!).
+Naming files is an important thing. When you open a coding directory, you want to understand easily how the directory is structured, just as your code. Options differ on how to do it. The first option is to properly structure your main script in a fashion that the number of files is limited and easily understandable, such as `loading_data`, `cleaning_data`, `descriptive_statistics`, and `econometric analysis`. Doing it this way, you know quickly how to look at it if you want to change or add something to your script.  
 
-Finally, we can sum up the structure of the project as follows in a more general manner.
+Another option is to store your subscripts within subdirectories with explicit names such as `descriptive statistics`, `data`, or `econometric_analysis`. It helps to navigate through the directory and understand the code and the underlying choices (which is, in the end, the main thing). Within each subdirectory, we advise you to number the coding files, just to remind you in which order these scripts must be executed. In the same fashion, naming objects within the script should be as clear as possible to ensure team members understand what is what (but remind you that comments are helpful also!).
 
-:::{.panel-tabset}
-
-## R
-
-- code
-    - README.md
-    - main_script.R
-    - logfile.md
-    - descriptive_statistics
-        - 01_stat_code.R
-        - 02_stat_code.R
-    - loading_data
-        - 01_loading_data.R
-        - 02_filter_data.R
-    - econometric_analysis
-        - 01_diff_in_diff.R
-        - 02_robustness.R
-- output_code
-    - figure
-        - fig_stat_des.png
-        - fig_stat_des_sample.png
-    - table
-        - tab_summary_stat.tex
-        - tab_main_results.tex
-        
-
-## Stata
-
-- code
-    - README.md
-    - main_script.do
-    - logfile.md
-    - descriptive_statistics
-        - 01_stat_code.do
-        - 02_stat_code.do
-    - loading_data
-        - 01_loading_data.do
-        - 02_filter_data.do
-    - econometric_analysis
-        - 01_diff_in_diff.do
-        - 02_robustness.do
-- output_code
-    - figure
-        - fig_stat_des.png
-        - fig_stat_des_sample.png
-    - table
-        - tab_summary_stat.tex
-        - tab_main_results.tex 
-
+:::{.callout-note}
+The solution you will favor mainly depends on the research team. Setting things at the beginning of the project with the project coordinator, or understanding how the organization works if you join a project, is the best option.
 :::
 
+The only advice we can give is to separate data from code, as long as it is possible. Having a repository with script files and a second repository with a dataset is helpful to structure your repository.
 
-Here, we have two main directories (`code` and `output_code`). The second directory contains all figures and tables being produced by the script. Hence, it is easy to search for output figures.
+:::{.callout-warning}
+It is highly advised to separate input data (the original data that you obtain from a data producer) from output data (generated by your script, such as intermediate results). It helps to identify data that can be deleted and easily reproduced from source data.
+:::
+
+## The logfile
+
+To monitor projects, and more specifically long-term projects, having a logfile can be a solution. This file registers all modifications being made with information such as the date, the author, and a brief explanation. It helps to track the evolution of the project, the main changes within the project, and also individuals' contributions to the coding part of the research project.
+
+:::{.callout-warning}
+The logfile can be directly integrated within the main script to track and register what we need to do, what we need to improve, and what changes were made compared to older versions of code. Having a separate file is not mandatory.
+:::
+
+By doing so, it helps to identify changes and makes researching a specific file version easier. Here is a snapshot of a potential logfile used for an ongoing project:
+
+```{markdown, eval = FALSE}
+
+# To-do
+- [ ] Make some descriptive statistics about tenure status
+- [ ] Merging and comparison with Orbis database
+- [ ] Need to assess the quality of changes within the BO register
+- [ ] Launch a new collection for 2025
+- [ ] Outcomes about rental eviction, housing maintenance, and renters' income to compute
+- [ ] Access to the TVVI database
+
+# Previous changes
+
+## 25.05.06
+
+- Code for the internal workshop is ok. RL 2db4c55 
+- Figures are currently working. First push in a GitHub repo in the next weeks. RL 2db4c55
+- Code review. RL 2db4c55
+
+## 25.04.20
+
+- New code to have a matching rate per percentile. RL 688eea8
+- We also account for the individual shares and highlight that the 25% rule is a main limit for transparency. RL 688eea8
+- New map for Paris. RL 688eea8
+
+```
+
+:::{.callout-note}
+The logfile is most of the time written in a lightweight open source format such as `txt` or `Markdown` to be easily readable and writable, regardless of the OS.
+:::
+
+The logfile might also contain a to-do section. Research projects are not always linear, and writing future steps to introduce in this file is useful. Indeed, when we reopen a new project, looking at a logfile provides us with a good overview of what was achieved and what is needed.
+
+Finally, sharing a logfile between contributors is a key element to coordinating your efforts. Taking a look at the logfile enables all team members involved in the project to see what the future steps are to be implemented, whereas they can easily monitor previous achievements. The authorship makes communication easier, especially if there is a misunderstanding in the coding parts.
 
 ## Storing data {#sec-data-storing}
 
@@ -560,7 +558,7 @@ Besides the storage aspect, it is important to store data in an easily readable 
 
 Finally, mistakes in coding files are common. Performing a code review from time to time, some code review might be a good practice to ensure that everything runs as planned. For instance, you can add a `0` when filtering data that affects the composition of your sample, introduce a filter to simplify the data process in the first place that remains, or just comment on some parts of the code that are useful. Making code review helps to track and correct these potential mistakes. When you are writing your coding file, you don't necessarily have the hindsight to identify all issues (think about when writing a draft, you have some inconsistencies all along).
 
-A code review is just looking at the entire code sequentially and ensuring that everything is fine. First, you must be sure that your code is not buggy when you are running it. If it happens, you must correct it. Second, you must track any typo issues, such as the filtering process, wrong column assignment, etc., that might affect the results. Third, you may find your code too complex. If you can simplify it through a partial re-writing process, you should do it. Even if comments help understand your process, the easier your code is, the more understandable it is. 
+A code review is just looking at the entire code sequentially and ensuring that everything is fine. First, you must be sure that your code is not buggy when you are running it. If it happens, you must correct it. Second, you must track any typo issues, such as the filtering process, wrong column assignment, etc., that might affect the results. Third, you may find your code too complex. If you can simplify it through a partial rewriting process, you should do it. Even if comments help understand your process, the easier your code is, the more understandable it is. 
 
 ## Software versioning
 
