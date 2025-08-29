@@ -601,6 +601,7 @@ You can find here some resources:
 - [Naming Things in Code](https://www.youtube.com/watch?v=-J3wNP6u5YU) (YouTube Video)
 - [Why You Shouldn't Nest Your Code](https://www.youtube.com/watch?v=CFRhGnuXG-4&t=207s) (YouTube Video)
 - [Best Practices for Reproducible Code (Utrecht University)](https://utrechtuniversity.github.io/workshop-computational-reproducibility/)
+- [WID Guideline for Stata User](docs/wid_stata.pdf)
 <!--
 # Drafting technical documents
 
