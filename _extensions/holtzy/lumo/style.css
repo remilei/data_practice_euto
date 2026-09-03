@@ -13,23 +13,24 @@ h1 {
 }
 
 h1.title {
-    color: #f8f9fa;
+    color: #000000;
 }
 
 p.subtitle {
-    color: #f8f9fa;
+    color: #000000;
 }
 
 p.author {
-    color: #f8f9fa;
+    color: #000000;
 }
 
 p.date {
-    color: #f8f9fa;
+    color: #000000;
 }
 
 span.header-keyword {
-    color: #f8f9fa;
+    color: #000000;
+    font-weight: bold;
 }
 
 @media (min-width: 1024px) {
@@ -37,6 +38,7 @@ span.header-keyword {
         font-size: 3rem;
     }
 }
+
 h2 {
     margin-top: 190px !important;
     margin-block-start: 20px;
@@ -47,9 +49,11 @@ h2 {
     letter-spacing: -0.02em;
     transition: color 0.2s ease;
 }
+
 h2:first-of-type {
     margin-top: 0;
 }
+
 h3 {
     margin-top: 2rem;
     margin-block-start: 20px;
@@ -62,9 +66,11 @@ h3 {
 p {
     line-height: 28px;
 }
+
 p:not(:first-child) {
     margin-top: 12px;
 }
+
 a {
     font-weight: 500;
     color: var(--primary-color);
@@ -78,7 +84,8 @@ ul {
     margin-left: 1.5rem;
     list-style-type: disc;
 }
-ul > li {
+
+ul>li {
     margin-top: 0.5rem;
 }
 
@@ -89,18 +96,22 @@ ul > li {
     border-color: var(--primary-color);
     border-radius: 4px;
 }
+
 .nav-pills .nav-link.active {
     color: white;
     background-color: var(--primary-color);
 }
+
 .nav-pills .nav-link {
     padding: 5px;
     margin-right: 4px;
 }
+
 ul.nav.nav-tabs {
     margin: 0px;
     border: none;
 }
+
 .tab-content {
     border: none;
     margin-top: 10px;
@@ -108,15 +119,17 @@ ul.nav.nav-tabs {
 }
 
 /* ------------------------------------------- Table of content ----------------- */
-.sidebar nav[role="doc-toc"] ul > li > a.active,
-.sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+.sidebar nav[role="doc-toc"] ul>li>a.active,
+.sidebar nav[role="doc-toc"] ul>li>ul>li>a.active {
     border-left: 1px solid var(--primary-color);
     color: var(--primary-color) !important;
 }
-.sidebar nav[role="doc-toc"] ul > li > a:hover,
-.sidebar nav[role="doc-toc"] ul > li > ul > li > a:hover {
+
+.sidebar nav[role="doc-toc"] ul>li>a:hover,
+.sidebar nav[role="doc-toc"] ul>li>ul>li>a:hover {
     color: var(--primary-color) !important;
 }
+
 #TOC {
     top: 50%;
     position: relative;
@@ -128,14 +141,16 @@ hr {
     margin-top: 23px;
     margin-bottom: 23px;
     border: 0;
-    border-top: 2px solid white;
+    border-top: 2px solid black;
     width: 0;
     animation: separator-width 5s ease-in-out forwards;
 }
+
 @keyframes separator-width {
     0% {
         width: 0;
     }
+
     100% {
         width: 100%;
     }
@@ -175,7 +190,7 @@ button {
 }
 
 .grey-section {
-    background-color: #f8f9fa;
+    background-color: #000000;
     padding-top: 40px;
     padding-bottom: 40px;
     margin-top: 20px;

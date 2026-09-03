@@ -1,14 +1,14 @@
 ---
 title: "Data and Code"
 format:
-  lumo-html: 
-    logo: "images/eu_tax_logo.png"
-    primary-color: "#203f91"
+  lumo-html:
+    # logo: "images/eu_tax_logo.png"
+    primary-color: "#C0F0EC"
     self-contained: true
     is-particlejs-enabled: true
     toc: true
-    bg-image: "images/background.png"
-author: EU Tax Observatory
+    bg-image: "images/background2.png"
+author: International Tax Observatory
 date: last-modified
 ---
 
@@ -17,6 +17,64 @@ This document presents some general advice about how to **collaborate, manage, s
 :::{.callout-note}
 This is just general advice! Of course, it depends on the project, the goal to be achieved, and keeping some flexibility is always a good idea!
 :::
+
+## AI Use for Researchers
+
+AI use is increasing in all economic sectors, and research is no exception. The AI use is relatively new for research, meaning that all researchers are still experimenting, trying to make the best of these tools, while preventing the windfalls at the corners. First, let's take a look at the different type of AI.
+
+### Agents, chat
+
+Before going further, it is worth clarifying what falls under AI in the context of this guide. Two categories matter for research workflows: chat and agents.
+
+**Chat**
+
+A chat-based AI is a conversational interface: you ask a question or give an instruction, and the model answers within the conversation. It has no ability to act outside of the chat window: it cannot read your files, run your code, or browse your repository. Every exchange is self-contained, and the model only knows what you have explicitly given it, either in the current message or earlier in the same conversation.
+
+**AI agent**
+
+An AI agent goes a step further: it operates *within* an environment, typically a directory on your computer, and can take actions autonomously, such as reading and writing files, running code, executing terminal commands, or calling external tools. Rather than only answering questions, an agent can complete multi-step tasks on its own: for instance, reading a dataset, writing an analysis script, running it, and fixing the errors it encounters, without you having to copy and paste code back and forth. In comparison to a chat, an agent can access to your files and your terminal. It makes it more powerful, but also requires explicit permissions and guardrails.
+
+This distinction matters for research: an agent's ability to access your files directly is precisely what makes it useful for coding tasks, but it is also what requires extra caution, especially when working with confidential data (see the section below).
+
+### General advice
+
+#### Prompting
+
+You have a lot of tutorials about how to improve the efficiency of your prompts when using AI, regardless of the type of AI you use.
+
+1. You have to be precise and concise in what you want.
+2. Specify the output format you want. Do you need a dataset in csv, a summary of three lines of something, a file, etc.
+3. Try to specify what type of expertise you need, it helps to make the AI more agile on your specific task. "Answer as a R writing expert."
+4. Provide the context of your request
+5. Small tasks are easier to handle than complex ones. So, it's better to break complex projects into small ones.
+
+#### Agents
+
+For agents such as Claude Code, Codex, Mistral Vibe that operate within a directory, you have to provide context, memory and lines of conduct. Hence, you need to specify files (commonly in Markdown).
+
+1. **PROJECT.md**
+   In this file, you'll specify what you want to perform in this project. What's the long term objective, what data you have access to, what are the main packages / coding language you want to use, what are desirable outputs. It is the core of the project you want to work on. Also, you can write some rules to grant or forbid access to specific folders. It defines rules to avoid AI to access data for instance, or run code without your explicit permission. Hence, this file is important to manage the AI behaviour within your folders.
+
+2. **MEMORY.md**
+   This file is important. AI does not have memory. Consequently, when AI is called, it does **not** know what was performed previously. Having a memory file is important to work around this. Empirically, you'll ask the AI to write the MEMORY.md file according to what has been performed in each session. By doing so, when you reopen your repo in one or two weeks, you can ask the AI to read the MEMORY.md at the start of the session to provide context.
+
+:::{.callout-note}
+PROJECT.md and MEMORY.md are a naming convention suggested here, not a universal standard. Some tools do automatically recognize specific filenames for context (for instance, Claude Code reads `CLAUDE.md`, and Codex reads `AGENTS.md`, at the start of a session). Others don't, and you have to explicitly tell the agent to read your file. Check the documentation of the tool you use to know which filenames, if any, are loaded automatically, and adapt the names accordingly.
+:::
+
+#### Check
+
+AI can make mistakes. So you have to find a process to check what AI has been performed, whether it fits your expectation, and whether the results are valid. **Every line of code is your responsibility**, not the AI one. You have to understand what AI is performing. If not, either you ask AI to write it in a way you can understand it, or ask for explanation.
+
+### AI with confidential data
+
+Projects often involve confidential data. As researchers or research assistants, we are responsible for how the data we have access to is used. Consequently, we must be sure that the data is not sent to an AI supplier without proper consent. Let's say you have personal data and that you must comply with the GDPR. In such a case, **coding agents must be used with a high level of caution.** You cannot grant Codex, Claude, or other coding agents data access by default. Consequently, you have to **explicitly** write rules to manage the AI's access, for instance in the PROJECT.md file described above. Moreover, check whether the AI supplier itself complies with GDPR (e.g., data processing agreements, EU-based hosting).
+
+Here are a few measures to avoid sending data to coding agents:
+
+1. Remove data access entirely, if possible.
+2. Explicitly instruct the coding agent that it cannot load any data.
+3. Create a synthetic sample: a fake dataset that mirrors the structure and distribution of the original data, but contains no real values.
 
 ## Sharing code and versioning
 
@@ -187,110 +245,6 @@ Finally, the GitHub environment is not accessible in the CASD for security reaso
 
 [Overleaf](https://www.overleaf.com) is an online text editor widely used in research. From PSE, we get an Overleaf account that enables us to collaborate and write research papers, reports, or notes. It offers the possibility to integrate either Dropbox or GitHub. Hence, running your code automatically updates the repository with your output document (either paper, report, or even slides), making collaboration smoother.
 
-## Comments and readability
-
-Coding files can be hard to understand, especially for non-experts in the language of consideration. Moreover, data processing can be achieved following different packages, especially in R, which might make code reading difficult for outsiders. So first, you have to keep in mind to make your code as readable as possible. Let's take the two following examples, using Stata:
-
-:::{.panel-tabset}
-
-## Example 1
-
-```{stata, echo = TRUE, eval = FALSE}
-replace X="Yes" if Y=="Hello" // Cond 1
-replace X="Never" if Y=="Goodbye" // Cond 2
-``` 
-
-## Example 2
-
-```{stata, echo = TRUE, eval = FALSE}
-replace X = "Yes"    if Y == "Hello"     // Cond 1
-replace X = "Never"  if Y == "Goodbye"   // Cond 2
-```
-
-:::
-
-These two examples do the same thing. However, which version of the code is easier to read and understand? Probably example 2. For a short file, it does not make a huge difference. Yet, think about opening a big coding file, you will prefer to have a properly structured code, which enhances its readability and consequently the way you understand it.
-
-Readability of your code is important, but might not be sufficient. When you have to do multiple tasks, it is better to understand the flow. For instance, let's take the following example.
-
-::: {.panel-tabset}
-
-## R
-
-```{r, echo = TRUE, eval = FALSE}
-
-df_data[, u_p := val / sur]
-df_data <- df_data[u_p > 120 & u_p < 20000]
-df_data[, sur := NULL]
-lm(u_p ~ y_sale + h_type + l_mut, data = df_data)
-
-```
-
-## Stata
-```{stata, echo = TRUE, eval = FALSE}
-
-gen u_p = val / sur
-keep if u_p > 120 & u_p < 20000
-drop sur
-regress u_p y_sale i.h_type i.origin
-
-```
-:::
-
-
-If you are not an R/Stata expert, understanding such a chunk of code might be difficult (even if you are by the way). Hence, assessing whether there is an issue or a bad methodological choice is highly challenging. Now, let's look at the commented version of this script.
-
-:::{.panel-tabset}
-
-## R
-
-```{r, echo = TRUE, eval = FALSE}
-
-# we create a new column `u_p` that represents the housing unitary price: 
-# housing value (`val`) divided by surface (`sur`)
-df_data[, u_p := val / sur]
-
-# we now filter observations based on the housing unitary housing price.
-# we keep observations above 120 and under 20,000
-df_data <- df_data[u_p > 120 & u_p < 20000]
-
-# we remove the column surface
-df_data[, sur := NULL]
-
-# finally, we regress the unitary housing price on multiple variables:
-# - y_sale: year of sale
-# - h_type: housing type
-# - l_mut: last date of mutation
-# coefficients are obtained through OLS
-
-lm(u_p ~ y_sale + h_type + l_mut, data = df_data)
-```
-
-## Stata
-
-```{stata, echo = TRUE, eval = FALSE}
-* Create the new variable u_p
-gen u_p = val / sur
-
-* Keep observations where u_p is between 120 and 20000
-keep if u_p > 120 & u_p < 20000
-
-* Drop the variable sur
-drop sur
-
-* Run the linear regression
-regress u_p y_sale i.h_type i.origin
-
-```
-
-:::
-
-Comments are extremely helpful for others to understand your code. As a result, they can more easily spot any coding mistakes or poor methodological choices.
-
-Additionally, consider revisiting an old project six months or a year later. Your coding practices may have evolved, and you might have switched packages, making it more challenging to navigate through your code. This is particularly true for lengthy code files, which can be difficult to comprehend after being away from them for several months!
-
-However, for straightforward code, comments are not mandatory as they complicate the reading of the code. Hence, commenting code is a balance between having a clear explanation about what is performed and keeping the code as clean as possible. Performing code review (see @sec-codereview) helps to adjust code comments.
-
 ## Data accessibility
 
 The data used for the empirical analysis is key information to provide to ensure consistent and reproducible information. Hence, we need to detail the following information:
@@ -300,50 +254,6 @@ The data used for the empirical analysis is key information to provide to ensure
 - Metadata  
 
 For the metadata, it is useful to list for all team members who might join the project what is being stored in the main datasets. **Ideally**, having a clear explanation of each column, what the observation unit is, whether it is a custom column or derived directly from raw data. In addition, having some units might be of interest as well. It is time-consuming to do so (especially for a large dataset), but it helps a lot for newcomers to understand the data. If an online documentation exists elsewhere, do not hesitate to redirect directly to this website. However, in such a case, please make sure that your columns have the same names as the original data.
-
-## README file
-
-The README is probably the first file an outside individual will open when accessing your research project. In your README file, you must put important information such as:
-
-- Title and authorship
-- The main objective of the research project
-- Information about how to access the data
-- What are the main software being used in the project
-- The license of your code, in our case, is mostly open, but it depends on research projects.
-- Any explanation that helps individuals understand your repository
-
-:::{.callout-note}
-The README is always written in an open file format, mainly Markdown.
-:::
-
-An example of a README file
-
-```{markdown, eval = FALSE}
-
-# Name of the project
-
-## Overview
-Here, we discuss the objective of the project, a snapshot of the main conclusion, and potential redirection to the paper.
-
-## Features of the code
-List the big steps of making your code accessible. For instance:
-
-- Data collection
-- Data cleaning
-- Filtering of the dataset
-- Descriptive statistics
-- Econometric analysis
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for repo details.
-
-## Contact
-For any questions or feedback, please contact:
-
-Your Name: 
-GitHub: 
-
-```
 
 ## Organizing directory and files
 
@@ -498,50 +408,6 @@ The only advice we can give is to separate data from code, as long as it is poss
 It is highly advised to separate input data (the original data that you obtain from a data producer) from output data (generated by your script, such as intermediate results). It helps to identify data that can be deleted and easily reproduced from source data.
 :::
 
-## The logfile
-
-To monitor projects, and more specifically long-term projects, having a logfile can be a solution. This file registers all modifications being made with information such as the date, the author, and a brief explanation. It helps to track the evolution of the project, the main changes within the project, and also individuals' contributions to the coding part of the research project.
-
-:::{.callout-warning}
-The logfile can be directly integrated within the main script to track and register what we need to do, what we need to improve, and what changes were made compared to older versions of code. Having a separate file is not mandatory.
-:::
-
-By doing so, it helps to identify changes and makes researching a specific file version easier. Here is a snapshot of a potential logfile used for an ongoing project:
-
-```{markdown, eval = FALSE}
-
-# To-do
-- [ ] Make some descriptive statistics about tenure status
-- [ ] Merging and comparison with Orbis database
-- [ ] Need to assess the quality of changes within the BO register
-- [ ] Launch a new collection for 2025
-- [ ] Outcomes about rental eviction, housing maintenance, and renters' income to compute
-- [ ] Access to the TVVI database
-
-# Previous changes
-
-## 25.05.06
-
-- Code for the internal workshop is ok. RL 2db4c55 
-- Figures are currently working. First push in a GitHub repo in the next weeks. RL 2db4c55
-- Code review. RL 2db4c55
-
-## 25.04.20
-
-- New code to have a matching rate per percentile. RL 688eea8
-- We also account for the individual shares and highlight that the 25% rule is a main limit for transparency. RL 688eea8
-- New map for Paris. RL 688eea8
-
-```
-
-:::{.callout-note}
-The logfile is most of the time written in a lightweight open source format such as `txt` or `Markdown` to be easily readable and writable, regardless of the OS.
-:::
-
-The logfile might also contain a to-do section. Research projects are not always linear, and writing future steps to introduce in this file is useful. Indeed, when we reopen a new project, looking at a logfile provides us with a good overview of what was achieved and what is needed.
-
-Finally, sharing a logfile between contributors is a key element to coordinating your efforts. Taking a look at the logfile enables all team members involved in the project to see what the future steps are to be implemented, whereas they can easily monitor previous achievements. The authorship makes communication easier, especially if there is a misunderstanding in the coding parts.
-
 ## Storing data {#sec-data-storing}
 
 The main script is quite simple to read, regardless of whether you are an R expert. GitHub is a platform to share and collaborate on code. But, how about data? Generally speaking, we should avoid storing any data on it for two reasons. First, it relates to the sensitivity of the data. 
@@ -554,46 +420,6 @@ In R, there is a package to link your coding repository with your NextCloud data
 
 Besides the storage aspect, it is important to store data in an easily readable format, such as CSV or Parquet, to ensure an easy opening for other members or replicators. Proprietary formats such as Excel should be avoided.
 
-## Code review {#sec-codereview}
-
-Finally, mistakes in coding files are common. Performing a code review from time to time, some code review might be a good practice to ensure that everything runs as planned. For instance, you can add a `0` when filtering data that affects the composition of your sample, introduce a filter to simplify the data process in the first place that remains, or just comment on some parts of the code that are useful. Making code review helps to track and correct these potential mistakes. When you are writing your coding file, you don't necessarily have the hindsight to identify all issues (think about when writing a draft, you have some inconsistencies all along).
-
-A code review is just looking at the entire code sequentially and ensuring that everything is fine. First, you must be sure that your code is not buggy when you are running it. If it happens, you must correct it. Second, you must track any typo issues, such as the filtering process, wrong column assignment, etc., that might affect the results. Third, you may find your code too complex. If you can simplify it through a partial rewriting process, you should do it. Even if comments help understand your process, the easier your code is, the more understandable it is. 
-
-## Software versioning
-
-Finally, a point that is mostly omitted in reproducible coding is software and package versioning. A package or software might evolve, which might introduce some bugs in your code. For instance, a code written in 2019 might be broken if we use the current packages. Hence, we need to specify the version of the main software (R, Python, or Stata) and also the attached version of the packages used. For R, we provide the following code to access software and package versions.
-
-:::{.panel-tabset}
-
-## R
-
-```{r, eval = TRUE}
-# it provides information about the R version being used
-# also, it lists all packages being installed in your session
-sessionInfo() 
-
-# it returns the current version of the package of interest
-packageVersion("data.table")
-```
-
-## Stata
-
-```{stata, echo = TRUE, eval = FALSE}
-* Display Stata version information
-version
-
-* Display information about installed packages
-ado dir
-
-* To get more detailed information about a specific package, you can use:
-ado describe <package_name>
-```
-
-:::
-
-Here, the current version of R is 4.4.3, whereas the version of the `data.table` package is 1.17.0. I need to share this information to ensure that the results are fully reproducible, even in 10 years. An alternative is to use a [Docker](https://www.docker.com/) file, which provides all relevant files and packages to run your script and replicate your results. 
-
 ## Additional resources about coding
 
 You can find here some resources:
@@ -602,6 +428,10 @@ You can find here some resources:
 - [Why You Shouldn't Nest Your Code](https://www.youtube.com/watch?v=CFRhGnuXG-4&t=207s) (YouTube Video)
 - [Best Practices for Reproducible Code (Utrecht University)](https://utrechtuniversity.github.io/workshop-computational-reproducibility/)
 - [WID Guideline for Stata User](docs/wid_stata.pdf)
+
+You can find here some resources related to AI for economic research:
+
+
 <!--
 # Drafting technical documents
 
