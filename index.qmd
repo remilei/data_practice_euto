@@ -2,7 +2,7 @@
 title: "Data and Code"
 format:
   lumo-html:
-    # logo: "images/eu_tax_logo.png"
+    logo: "images/ito.png"
     primary-color: "#C0F0EC"
     self-contained: true
     is-particlejs-enabled: true
