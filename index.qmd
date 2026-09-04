@@ -38,6 +38,12 @@ This distinction matters for research: an agent's ability to access your files d
 
 ### General advice
 
+:::{.callout-tip}
+
+Communication is key. You don't have to hide the fact that you use AI, but you do have to **be transparent**. Feel free to talk about your AI practices with your supervisors.
+
+:::
+
 #### Prompting
 
 You have a lot of tutorials about how to improve the efficiency of your prompts when using AI, regardless of the type of AI you use.
